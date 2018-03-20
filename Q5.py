@@ -8,6 +8,7 @@
 from numpy import *
 from matplotlib.pyplot import *
 from scipy.signal import convolve2d
+from sklearn.preprocessing import normalize
 
 def ff(x,y):
     return (x**2 + y**2 <1)
@@ -15,7 +16,7 @@ def ff(x,y):
 def gg(x,y):
     return (abs(x)<.5)*(abs(y)<.3)
 
-Delta = .001
+Delta = .1
 x = linspace(-2,2,round(4/Delta))
 y = linspace(-2,2,round(4/Delta))
 
@@ -27,13 +28,14 @@ for j in range(size(x)):
         ggimg[j,k]=gg(x[j],y[k])
 
 ########################################
-# This, hopefully, normalizes ggimg
+# This, hopefully, normalizes ffimg ggimg
 ########################################
-ggmax, ggmin = ggimg.max(), ggimg.min()
-ggming = (ggimg - ggmin)/(ggmax - ggmin)
+# ffimg = normalize(ffimg, axis = 1, norm = 'l1')
+# ggimg = normalize(ggimg, axis = 1, norm = 'l1')
 ########################################
 
 result = convolve2d(ffimg,ggimg)
+result = normalize(result, axis = 1, norm = 'l1')
 
 subplot(1,3,1)
 extent = min(x), max(x), min(y), max(y)

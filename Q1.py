@@ -1,4 +1,4 @@
-# Q1
+# Q1.
 # Let x = (0, 0, 1, 1, ..., 1, 1, 0, 0, 0) be a vector with a long string of 1's, surrounded by a few zeros.
 # Plot x and its numerical convolution with itself once, twice, three times, four times
 # Can you descrive the curves you get?
@@ -26,7 +26,6 @@ arr[3].plot(x3)
 arr[3].set_title('Convolved 3 times')
 arr[4].plot(x4)
 arr[4].set_title('Convolved 4 Times')
-arr[4].annotate('local max', xy=(2, 1), xytext=(3, 10))
 f.subplots_adjust(hspace = 1.2)
 
 show()
